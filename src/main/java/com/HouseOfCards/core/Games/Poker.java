@@ -1,5 +1,7 @@
 package com.HouseOfCards.core.Games;
 
+import com.HouseOfCards.core.io.ILogger;
+
 public class Poker implements Game{
     private final String id = "1";
     private final String name = "Poker";
@@ -15,7 +17,8 @@ public class Poker implements Game{
     }
 
     @Override
-    public void play() {
-        // Logic to play game
+    public void play(ILogger logger) {
+        logger.response("========== Welcome to POKER ==========");
+        logger.response("OOPS! logic not yet defined...");
     }
 }
