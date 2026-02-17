@@ -2,6 +2,8 @@ package com.HouseOfCards.core.app;
 
 import com.HouseOfCards.core.GameCatalog;
 import com.HouseOfCards.core.Games.Game;
+import com.HouseOfCards.core.exceptions.EmptyCatalogException;
+import com.HouseOfCards.core.exceptions.GameException;
 import com.HouseOfCards.core.io.ILogger;
 
 import java.util.List;
@@ -29,37 +31,40 @@ public class App {
         logger.response("");
         logger.response("Available games:");
 
-        List<Game> games = gameCatalog.getAllGames();
-        if (games.isEmpty()) {
-            logger.response("No games registered.");
-            return;
+        try {
+            List<Game> games = gameCatalog.getAllGames();
+
+            for (Game game : games) {
+                logger.response("[" + game.getID() + "] " + game.getName());
+            }
+        } catch (GameException e){
+            logger.response("ERROR: " + e.getMessage());
         }
 
-        for (Game game : games) {
-            logger.response("[" + game.getID() + "] " + game.getName());
-        }
+
         logger.response("");
     }
 
     private Game selectGame(){
         while (true) {
-            String id = logger.ask("Select a game by id:");
-            Game game = gameCatalog.getById(id);
+            try {
+                String id = logger.ask("Select a game by id:");
 
-            if (game == null) {
-                logger.response("Invalid game id. Try again.");
-                continue;
+                Game game = gameCatalog.getById(id);
+
+                return game;   // valid → exit loop
+
+            } catch (GameException e) {
+                logger.response("ERROR: " + e.getMessage());
             }
-
-            return game;
         }
     }
 
-    private void runSelectedGame(Game selected) {
+    private void runSelectedGame(Game game) {
         logger.response("");
-        logger.response("Launching: " + selected.getName());
+        logger.response("Launching: " + game.getName());
         logger.response("--------------------------------");
-        selected.play(logger);
+        game.play(logger);
         logger.response("--------------------------------");
         logger.response("Exiting House of Cards.");
     }

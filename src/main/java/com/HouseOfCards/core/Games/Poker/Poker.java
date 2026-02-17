@@ -1,8 +1,9 @@
-package com.HouseOfCards.core.Games;
+package com.HouseOfCards.core.Games.Poker;
 
+import com.HouseOfCards.core.Games.Game;
 import com.HouseOfCards.core.io.ILogger;
 
-public class Poker implements Game{
+public class Poker implements Game {
     private final String id = "1";
     private final String name = "Poker";
 
