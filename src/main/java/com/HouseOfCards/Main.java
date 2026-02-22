@@ -1,6 +1,7 @@
 package com.HouseOfCards;
 
 import com.HouseOfCards.core.GameCatalog;
+import com.HouseOfCards.core.Games.Blackjack.Blackjack;
 import com.HouseOfCards.core.Games.Poker.Poker;
 import com.HouseOfCards.core.app.App;
 import com.HouseOfCards.core.io.ConsoleLogger;
@@ -12,7 +13,7 @@ public class Main {
 
         GameCatalog catalog = new GameCatalog();
         catalog.addGame(new Poker());
-        // add more games if required
+        catalog.addGame(new Blackjack());
 
         App app = new App(logger, catalog);
         app.start();
