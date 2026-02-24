@@ -1,11 +1,11 @@
-package com.HouseOfCards.core.Games.Poker;
+package com.HouseOfCards.core.Games.War;
 
 import com.HouseOfCards.core.Games.Game;
 import com.HouseOfCards.core.io.ILogger;
 
-public class Poker implements Game {
+public class War implements Game {
     private final String id = "1";
-    private final String name = "Poker";
+    private final String name = "War";
 
     @Override
     public String getID() {
@@ -19,7 +19,7 @@ public class Poker implements Game {
 
     @Override
     public void play(ILogger logger) {
-        logger.response("========== Welcome to POKER ==========");
-        logger.response("OOPS! logic not yet defined...");
+        logger.response("========== Welcome to The game of WAR ==========");
+        new WarRound(logger).play();
     }
 }
