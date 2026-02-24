@@ -1,10 +1,8 @@
 package com.HouseOfCards.core.Games.War;
 
-import com.HouseOfCards.core.Games.War.Card;
 import com.HouseOfCards.core.exceptions.EmptyDeckException;
 
 import java.util.ArrayList;
-import java.util.EmptyStackException;
 import java.util.List;
 
 
@@ -14,7 +12,6 @@ public class WarDeck implements Deck {
 
     public WarDeck(){
         this.cards = new ArrayList<>();
-        // logic to add card -> 52 cards: 4*13
         for(Suit suit: Suit.values()){
             for(Rank rank : Rank.values()){
                 cards.add(new Card(suit, rank));

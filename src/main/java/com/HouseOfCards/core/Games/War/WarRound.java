@@ -1,45 +1,32 @@
 package com.HouseOfCards.core.Games.War;
 
-import com.HouseOfCards.core.Games.War.Deck;
-import com.HouseOfCards.core.Games.War.PlayerHand;
 import com.HouseOfCards.core.io.ILogger;
-
-import java.lang.management.PlatformLoggingMXBean;
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
 
 public class WarRound {
     private final ILogger logger;
     private final Deck deck;
-
     private final PlayerHand player1;
     private final PlayerHand player2;
+    private final List<Card> holdCards;
 
     public WarRound(ILogger logger){
-        // initialize logger
-        // initialize deck
-        // shuffle deck
-        // initialize players
-        // start the game
         this.logger = logger;
         this.deck = new WarDeck();
         this.deck.shuffle();
         this.player1 = new PlayerHand();
         this.player2 = new PlayerHand();
+        this.holdCards = new ArrayList<>();
     }
 
     public void play(){
-        // initial cards deal: cards dealing logic -> 26 cards each
-        // show first card (both)
-        // compare cards
         initialDeal();
         gameplay();
         declareResult();
     }
 
     public void initialDeal(){
-        //logic to deal the cards to two players- 26 each
         while(deck.remaining() > 0){
             player1.getCard(deck.draw());
             player2.getCard(deck.draw());
@@ -56,8 +43,6 @@ public class WarRound {
 
     public void playCards(){
 
-        List<Card> holdCards = new ArrayList<>();
-
         while(true){
             if (player1.remainingCards() == 0 || player2.remainingCards() == 0) {
                 return;
@@ -70,16 +55,16 @@ public class WarRound {
 
             holdCards.add(card1);
             holdCards.add(card2);
-            // compare cards
+
             int result = card1.compare(card2);
 
             if (result > 0) {
-                awardCards(player1, holdCards);
+                awardCards(player1);
                 logger.response("Both the cards go to Player1");
                 return;
             }
             else if (result < 0) {
-                awardCards(player2, holdCards);
+                awardCards(player2);
                 logger.response("Both the cards go to Player2");
                 return;
             }
@@ -91,7 +76,6 @@ public class WarRound {
                     return;
                 }
 
-                // Each player must place 3 face-down cards
                 for (int i = 0; i < 3; i++) {
 
                     if (player1.remainingCards() == 0 ||
@@ -102,15 +86,15 @@ public class WarRound {
                     holdCards.add(player1.playCard());
                     holdCards.add(player2.playCard());
                 }
-                // Loop continues → next comparison
             }
         }
     }
 
-    private void awardCards(PlayerHand winner, List<Card> holdCards) {
+    private void awardCards(PlayerHand winner) {
         for (Card card : holdCards) {
             winner.addCardAtEnd(card);
         }
+        holdCards.clear();
     }
 
     private void displayCards(Card c1, Card c2){
