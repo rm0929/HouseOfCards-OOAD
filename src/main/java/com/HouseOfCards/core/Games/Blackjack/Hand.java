@@ -3,6 +3,7 @@ package com.HouseOfCards.core.Games.Blackjack;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import com.HouseOfCards.core.Games.Cards.Card;
 
 public class Hand {
     private final List<Card> cards;

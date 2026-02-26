@@ -1,4 +1,6 @@
-package com.HouseOfCards.core.Games.Blackjack;
+package com.HouseOfCards.core.Games;
+
+import com.HouseOfCards.core.Games.Cards.Card;
 
 public interface Deck {
     void shuffle();

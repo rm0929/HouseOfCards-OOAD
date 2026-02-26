@@ -1,11 +1,13 @@
 package com.HouseOfCards.core.Games.Blackjack;
 
+import com.HouseOfCards.core.Games.Deck;
 import com.HouseOfCards.core.io.ILogger;
+import com.HouseOfCards.core.Games.Cards.Card;
+import com.HouseOfCards.core.Games.Cards.Rank;
 
 public class BlackjackRound {
     private final ILogger logger;
     private final Deck deck;
-
     private final Hand player;
     private final Hand dealer;
 
@@ -92,7 +94,7 @@ public class BlackjackRound {
         int aces = 0;
 
         for (Card c : hand.getCards()) {
-            total += c.getRank().getBlackjackValue();
+            total += c.getRank().getCardValue();
             if (c.getRank() == Rank.ACE) aces++;
         }
 
