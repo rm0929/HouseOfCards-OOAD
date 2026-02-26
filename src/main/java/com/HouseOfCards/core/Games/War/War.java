@@ -18,7 +18,7 @@ public class War implements Game {
 
     @Override
     public void play(ILogger logger) {
-        logger.response("========== Welcome to BLACKJACK ==========");
+        logger.response("========== Welcome to The game of WAR ==========");
         new WarRound(logger).play();
     }
 }
