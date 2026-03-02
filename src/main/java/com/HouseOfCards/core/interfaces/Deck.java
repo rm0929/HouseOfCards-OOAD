@@ -1,6 +1,6 @@
-package com.HouseOfCards.core.Games.War;
+package com.HouseOfCards.core.interfaces;
 
-import com.HouseOfCards.core.Games.War.Card;
+import com.HouseOfCards.core.models.Card;
 
 public interface Deck {
     void shuffle();

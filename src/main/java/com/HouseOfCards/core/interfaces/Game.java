@@ -1,4 +1,4 @@
-package com.HouseOfCards.core.Games;
+package com.HouseOfCards.core.interfaces;
 
 import com.HouseOfCards.core.io.ILogger;
 

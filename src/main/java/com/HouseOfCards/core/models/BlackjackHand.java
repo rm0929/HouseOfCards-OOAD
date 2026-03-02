@@ -1,14 +1,13 @@
-package com.HouseOfCards.core.Games.Blackjack;
+package com.HouseOfCards.core.models;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import com.HouseOfCards.core.Games.Cards.Card;
 
-public class Hand {
+public class BlackjackHand {
     private final List<Card> cards;
 
-    public Hand(){
+    public BlackjackHand(){
         this.cards = new ArrayList<>();
     }
 

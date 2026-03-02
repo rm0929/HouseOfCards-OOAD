@@ -1,8 +1,8 @@
 package com.HouseOfCards;
 
 import com.HouseOfCards.core.GameCatalog;
-import com.HouseOfCards.core.Games.Blackjack.Blackjack;
-import com.HouseOfCards.core.Games.War.War;
+import com.HouseOfCards.core.Games.Blackjack;
+import com.HouseOfCards.core.Games.War;
 import com.HouseOfCards.core.app.App;
 import com.HouseOfCards.core.io.ConsoleLogger;
 import com.HouseOfCards.core.io.ILogger;

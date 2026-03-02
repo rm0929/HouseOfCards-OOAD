@@ -1,23 +1,25 @@
-package com.HouseOfCards.core.Games.War;
-import com.HouseOfCards.core.Games.Deck;
+package com.HouseOfCards.core.services;
+import com.HouseOfCards.core.models.WarHand;
+import com.HouseOfCards.core.models.StandardDeck;
+import com.HouseOfCards.core.interfaces.Deck;
 import com.HouseOfCards.core.io.ILogger;
-import com.HouseOfCards.core.Games.Cards.Card;
+import com.HouseOfCards.core.models.Card;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WarRound {
     private final ILogger logger;
     private final Deck deck;
-    private final PlayerHand player1;
-    private final PlayerHand player2;
+    private final WarHand player1;
+    private final WarHand player2;
     private final List<Card> holdCards;
 
     public WarRound(ILogger logger){
         this.logger = logger;
-        this.deck = new WarDeck();
+        this.deck = new StandardDeck();
         this.deck.shuffle();
-        this.player1 = new PlayerHand();
-        this.player2 = new PlayerHand();
+        this.player1 = new WarHand();
+        this.player2 = new WarHand();
         this.holdCards = new ArrayList<>();
     }
 
@@ -29,8 +31,8 @@ public class WarRound {
 
     public void initialDeal(){
         while(deck.remaining() > 0){
-            player1.getCard(deck.draw());
-            player2.getCard(deck.draw());
+            player1.addToTop(deck.draw());
+            player2.addToTop(deck.draw());
         }
         logger.response("Cards are successfully dealt to both the players");
         logger.response("Game is starting now...");
@@ -91,9 +93,9 @@ public class WarRound {
         }
     }
 
-    private void awardCards(PlayerHand winner) {
+    private void awardCards(WarHand winner) {
         for (Card card : holdCards) {
-            winner.addCardAtEnd(card);
+            winner.addToBottom(card);
         }
         holdCards.clear();
     }
@@ -103,12 +105,12 @@ public class WarRound {
         logger.response("Player2 card value: "+ c2.getRank().getCardValue());
     }
 
-    private PlayerHand getWinner() {
+    private WarHand getWinner() {
         return player1.remainingCards() > 0 ? player1 : player2;
     }
 
     public void declareResult() {
-        PlayerHand winner = getWinner();
+        WarHand winner = getWinner();
         if (winner == player1) {
             logger.response("Player 1 wins the game!");
         } else {

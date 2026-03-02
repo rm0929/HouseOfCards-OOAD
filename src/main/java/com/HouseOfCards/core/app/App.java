@@ -1,8 +1,7 @@
 package com.HouseOfCards.core.app;
 
 import com.HouseOfCards.core.GameCatalog;
-import com.HouseOfCards.core.Games.Game;
-import com.HouseOfCards.core.exceptions.EmptyCatalogException;
+import com.HouseOfCards.core.interfaces.Game;
 import com.HouseOfCards.core.exceptions.GameException;
 import com.HouseOfCards.core.io.ILogger;
 

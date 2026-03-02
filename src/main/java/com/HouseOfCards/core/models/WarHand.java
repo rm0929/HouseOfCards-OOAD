@@ -1,20 +1,19 @@
-package com.HouseOfCards.core.Games.War;
+package com.HouseOfCards.core.models;
 
 import java.util.Deque;
 import java.util.LinkedList;
-import com.HouseOfCards.core.Games.Cards.Card;
 
-public class PlayerHand {
+public class WarHand {
     Deque<Card> cards;
 
-    public PlayerHand(){
+    public WarHand(){
         this.cards = new LinkedList<>();
     }
 
-    public void getCard(Card card){
+    public void addToTop(Card card){
         cards.addFirst(card);
     }
-    public void addCardAtEnd(Card card){
+    public void addToBottom(Card card){
         cards.addLast(card);
     }
 

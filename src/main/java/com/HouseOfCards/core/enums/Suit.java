@@ -1,4 +1,4 @@
-package com.HouseOfCards.core.Games.Cards;
+package com.HouseOfCards.core.enums;
 
 public enum Suit {
     HEARTS,

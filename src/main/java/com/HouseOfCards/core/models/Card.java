@@ -1,4 +1,7 @@
-package com.HouseOfCards.core.Games.Cards;
+package com.HouseOfCards.core.models;
+
+import com.HouseOfCards.core.enums.Rank;
+import com.HouseOfCards.core.enums.Suit;
 
 import java.util.Objects;
 

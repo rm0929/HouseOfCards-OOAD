@@ -1,6 +1,7 @@
-package com.HouseOfCards.core.Games.War;
-import com.HouseOfCards.core.Games.Game;
+package com.HouseOfCards.core.Games;
+import com.HouseOfCards.core.interfaces.Game;
 import com.HouseOfCards.core.io.ILogger;
+import com.HouseOfCards.core.services.WarRound;
 
 public class War implements Game {
     private static final String ID = "1";
