@@ -1,7 +1,8 @@
-package com.HouseOfCards.core.Games.Blackjack;
+package com.HouseOfCards.core.Games;
 
-import com.HouseOfCards.core.Games.Game;
+import com.HouseOfCards.core.interfaces.Game;
 import com.HouseOfCards.core.io.ILogger;
+import com.HouseOfCards.core.services.BlackjackRound;
 
 public class Blackjack implements Game {
     private static final String ID = "2";

@@ -1,20 +1,24 @@
-package com.HouseOfCards.core.Games.Blackjack;
+package com.HouseOfCards.core.services;
 
+import com.HouseOfCards.core.models.StandardDeck;
+import com.HouseOfCards.core.models.BlackjackHand;
+import com.HouseOfCards.core.interfaces.Deck;
 import com.HouseOfCards.core.io.ILogger;
+import com.HouseOfCards.core.models.Card;
+import com.HouseOfCards.core.enums.Rank;
 
 public class BlackjackRound {
     private final ILogger logger;
     private final Deck deck;
-
-    private final Hand player;
-    private final Hand dealer;
+    private final BlackjackHand player;
+    private final BlackjackHand dealer;
 
     public BlackjackRound(ILogger logger){
         this.logger = logger;
-        this.deck = new BlackJackDeck();
+        this.deck = new StandardDeck();
         this.deck.shuffle();
-        this.player = new Hand();
-        this.dealer = new Hand();
+        this.player = new BlackjackHand();
+        this.dealer = new BlackjackHand();
     }
 
     public void play(){
@@ -87,12 +91,12 @@ public class BlackjackRound {
         else logger.response("Push (tie)! " + pv + " vs " + dv);
     }
 
-    private int handValue(Hand hand) {
+    private int handValue(BlackjackHand hand) {
         int total = 0;
         int aces = 0;
 
         for (Card c : hand.getCards()) {
-            total += c.getRank().getBlackjackValue();
+            total += c.getRank().getCardValue();
             if (c.getRank() == Rank.ACE) aces++;
         }
 

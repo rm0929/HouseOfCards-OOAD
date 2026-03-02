@@ -1,6 +1,6 @@
 package com.HouseOfCards.core;
 
-import com.HouseOfCards.core.Games.Game;
+import com.HouseOfCards.core.interfaces.Game;
 import com.HouseOfCards.core.exceptions.DuplicateGameException;
 import com.HouseOfCards.core.exceptions.EmptyCatalogException;
 import com.HouseOfCards.core.exceptions.GameNotFoundException;

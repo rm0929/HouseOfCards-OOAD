@@ -1,4 +1,7 @@
-package com.HouseOfCards.core.Games.Blackjack;
+package com.HouseOfCards.core.models;
+
+import com.HouseOfCards.core.enums.Rank;
+import com.HouseOfCards.core.enums.Suit;
 
 import java.util.Objects;
 
@@ -20,19 +23,23 @@ public class Card {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return rank + " of " + suit;
     }
 
-    @Override
-    public boolean equals(Object o){
+    public int compare(Card other) {
+        return Integer.compare(
+                this.rank.getCardValue(),
+                other.rank.getCardValue()
+        );
+    }
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Card card)) return false;
         return suit == card.suit && rank == card.rank;
     }
 
-    @Override
-    public int hashCode(){
-        return Objects.hash(suit, rank);
-    }
+    public int hashcode() { return Objects.hash(suit, rank);}
+
+
 }
